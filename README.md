@@ -27,7 +27,7 @@
 4. 重新 qmake 后，编译即可运行 程序
 
 
-#### Debian/Ubuntu (Linux) 平台
+### Debian/Ubuntu (Linux) 平台
 
 可以下载编译好的 也可以自己编译最新的
 
@@ -87,7 +87,8 @@
 10. 打开 clone 下来的 Beslyric-for-X 项目，qmake 后，编译即可运行
 
 
-#### MacOs 平台
+
+### MacOs 平台
 
 暂未尝试，后面尝试后补充
 
