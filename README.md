@@ -11,18 +11,20 @@
 
 ## 使用步骤
 
++ 本项目为 Beslyric-for-X 的一部分，先 git clone Beslyric-for-X 项目到本地自己喜欢的目录
+
+>git clone https://github.com/BensonLaur/Beslyric-for-X.git
+
 
 ### Windows 平台
 
-- 本项目为 Beslyric-for-X 的一部分，先 git clone 项目到本地自己喜欢的目录
+1. clone 本项目 beslyic-lib 到本地，clone 到哪里都行（不过建议clone 到C:\lib\beslyic-lib，这样后面第2步不用改代码）
 
-- clone 本项目 beslyic-lib 到本地，也是 clone 到哪里都行（若想要节省步骤，可以在C盘下建立目录 C:\lib，然后 clone 到其中，即结果为：C:\lib\beslyic-lib）
+2. 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 win32{} 节点下对应的路径
 
-- 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 win32{ } 节点下对应的路径
+3. 将本项目下 beslyic-lib\win32\ffmpeg_x_x_x\bin 和 C:\lib\beslyic-lib\win32\SDL_x_x_x\bin 的 dll 拷贝至 Beslyric-for-X 编译程序 的运行目录
 
-- 将本项目下 beslyic-lib\win32\ffmpeg_x_x_x\bin 和 C:\lib\beslyic-lib\win32\SDL_x_x_x\bin 的 dll 拷贝至 Beslyric-for-X 编译程序 的运行目录
-
-- 重新 qmake 后，编译即可运行 程序
+4. 重新 qmake 后，编译即可运行 程序
 
 
 #### Debian/Ubuntu (Linux) 平台
@@ -33,19 +35,19 @@
 
 也可以自己编译，这里尝试自己编译：
 
-- 下载最新 ffmpeg 源码
+1. 下载最新 ffmpeg 源码
 
 > git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 
-- 某些Linux没有安装gcc/g++，需要先安装gcc/g++
+2. 某些Linux没有安装gcc/g++，需要先安装gcc/g++
 
 > sudo apt-get -y install gcc g++
 
-- 安装相关的类库 (注意这里 sdl相关库 使用的是 libsdl2-dev)
+3. 安装相关的类库 (注意这里 sdl相关库 使用的是 libsdl2-dev)
 
 > sudo apt-get -y install yasm libfdk-aac-dev libx264-dev libsdl2-dev
 
-- 进入ffmpeg 源码目录，依次执行如下命令（更多详细细节可参考官方编译 [文档](https://trac.ffmpeg.org/wiki/CompilationGuide)）
+4. 进入ffmpeg 源码目录，依次执行如下命令（更多详细细节可参考官方编译 [文档](https://trac.ffmpeg.org/wiki/CompilationGuide)）
 
 ./configure --help  可查看更多参数以及具体意义
 
@@ -55,13 +57,34 @@
 
 > make install
 
-- 等待编译完成，之后应该可以看到 /usr/local/lib /usr/local/include 里多了相应的 ffmpeg 库文件
+5. 等待编译完成，之后应该可以看到 /usr/local/lib /usr/local/include 里多了相应的 ffmpeg 库文件
 
-- 经过测试，此时 GNU 连接器 ld 有可能在编译过程中连接时，还没能直接到安装ffmpeg库所在目录（/etc/ld.so.conf 决定了编译时去连接的路径，本人测试情况是 /etc/ld.so.conf 间接指出去载入 /etc/ld.so.conf.d/\*.conf 目录下所有conf 文件，在 /etc/ld.so.conf.d/libc.conf 里指明了去 /usr/local/lib 下查找连接），所以保险起见，在确定 ffmpeg 库安装路径（这里即 /usr/local/lib）已经在 /etc/ld.so.conf 直接或间接指明之后，执行以下语句载入最新设置
+6. clone 本项目 beslyic-lib 到本地，clone 到哪里都行（不过建议 clone 到 /usr/local/beslyic-lib，这样后面第7步不用改代码）
+
+7. 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 unix{} 节点下对应的路径
+
+8. GNU 连接器 ld 需要知道 lib 的路径，以在编译时顺利链接，链接失败会提示：collect2:ld returned 1 exit status
+/etc/ld.so.conf 决定了编译时去连接的路径
+
+所以，直接在 /etc/ld.so.conf  文件追加：
+
+> /usr/local/lib
+
+> /usr/local/beslyric-lib/SDL_2_0_3/lib
+
+或者，如果 /etc/ld.so.conf 文件里是 include /etc/ld.so.conf.d/*.conf, 可以在 /etc/ld.so.conf.d/ 创建一个新的 .conf 文件，如：beslyric.conf
+
+> \# lib path for beslyric to search by linker 'ld'
+
+>/usr/local/lib
+
+>/usr/local/beslyric-lib/SDL_2_0_3/lib
+
+9. 设置后，执行下面使修改立刻生效
 
 > ldconfig
 
-- 打开 clone 下来的 Beslyric-for-X 项目，qmake 后，编译即可运行
+10. 打开 clone 下来的 Beslyric-for-X 项目，qmake 后，编译即可运行
 
 
 #### MacOs 平台
