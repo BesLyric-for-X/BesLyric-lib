@@ -1,6 +1,6 @@
-### beslyic-lib 背景
+## beslyic-lib 背景
 
-[Beslyric-for-X](https://github.com/BensonLaur/Beslyric-for-X) 项目中，使用跨平台开源库 ffmpeg 解析播放音频文件。
+[Beslyric-for-X](https://github.com/BensonLaur/Beslyric-for-X) 项目中，使用跨平台开源库 ffmpeg 解析播放音频文件。本项目提供了 ffmpeg 的相关组件和使用说明
 
 正如ffmpeg 官网所说，ffmpeg 是一个非常活跃的由开发者驱动的一个项目，是很多多媒体项目的核心组件，因此一直在持续更新。直接使用最新开发分支的内容基本不会出什么大的问题，所以人们经常这么干。
 
@@ -8,9 +8,11 @@
 
 考虑到更新ffmpeg的灵活性 以及 跨平台要求的特性，Beslyric-for-X 中在使用 ffmpeg 时，不直接将其置于项目下，而是开发者在对应的平台上各自独立单独安装。 
 
-### 使用步骤
 
-#### Windows 平台
+## 使用步骤
+
+
+### Windows 平台
 
 - 本项目为 Beslyric-for-X 的一部分，先 git clone 项目到本地自己喜欢的目录
 
@@ -22,7 +24,8 @@
 
 - 重新 qmake 后，编译即可运行 程序
 
-##### Debian/Ubuntu (Linux) 平台
+
+#### Debian/Ubuntu (Linux) 平台
 
 可以下载编译好的 也可以自己编译最新的
 
@@ -60,7 +63,8 @@
 
 - 打开 clone 下来的 Beslyric-for-X 项目，qmake 后，编译即可运行
 
-##### MacOs 平台
+
+#### MacOs 平台
 
 暂未尝试，后面尝试后补充
 
