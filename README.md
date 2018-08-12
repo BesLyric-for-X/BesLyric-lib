@@ -97,10 +97,46 @@ ldconfig
 
 -----------------------------------
 
-
 ### MacOs 平台
 
-暂未尝试，后面尝试后补充
+Mac Os 的配置过程和 Debian/Ubuntu (Linux) 平台下类似，可以下载编译好的 也可以自己编译最新的
+
+如果下载编译好的，应该可以下载相应文件放到 /usr/local/lib  /usr/local/bin 等目录，还没尝试；
+
+也可以自己编译，这里尝试自己编译：
+
+1. 下载最新 ffmpeg 源码
+
+` git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg `
+
+2. 确保编译环境就绪，简单常规的方式应该是 确保安装 xcode， Command Lines Tools 等
+
+具体操作可参考 [这篇博文](https://www.cnblogs.com/BensonLaur/p/9461589.html#title2) 第二点“准备 Mac 下的开发环境”
+
+安装好基本的工具
+
+3. 安装相关的类库 (注意这里 sdl相关库 使用的是 sdl2)
+
+` brew install fdk-aac sdl2 x264 yasm `
+
+4. 进入ffmpeg 源码目录，依次执行如下命令（更多详细细节可参考官方编译 [文档](https://trac.ffmpeg.org/wiki/CompilationGuide)）
+
+./configure --help  可查看更多参数以及具体意义
+
+```
+    ./configure --prefix=/usr/local --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-nonfree --enable-version3
+    make
+    make install
+```
+
+5. 等待编译和安装完成，之后应该可以看到 /usr/local/lib /usr/local/include 里多了相应的 ffmpeg 库文件
+
+6. 查看自己的 ffmpeg include\lib 目录位置（或链接位置）， SDL include\lib 位置（或链接位置）；一般情况下，应该分别位于：usr\local\include 和 usr\local\lib
+
+7. 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 unix{} 节点下对应的路径（在第6步确定）
+
+8. 打开 clone 下来的 Beslyric-for-X 项目，qmake 后，编译即可运行
+
 
 -----------------------------------
 
