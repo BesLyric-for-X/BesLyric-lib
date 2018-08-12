@@ -68,10 +68,9 @@ git clone https://github.com/BensonLaur/Beslyric-for-X.git
 
 7. 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 unix{} 节点下对应的路径
 
-8. GNU 连接器 ld 需要知道 lib 的路径，以在编译时顺利链接，链接失败会提示：collect2:ld returned 1 exit status
-/etc/ld.so.conf 决定了编译时去连接的路径
+8. GNU 连接器 ld 需要知道 lib 的路径，以在编译时顺利链接。若链接失败会提示：collect2:ld returned 1 exit status； 或者程序无法找到lib（ 如提示：error while loading shared libraries: libavcodec.so.58: cannot open shared object file: No such file or directory）
 
-所以，直接在 /etc/ld.so.conf  文件追加：
+/etc/ld.so.conf 决定了编译时去连接的路径。所以，直接在 /etc/ld.so.conf  文件追加：
 
 ```
 /usr/local/lib
