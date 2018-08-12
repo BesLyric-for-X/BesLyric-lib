@@ -13,7 +13,9 @@
 
 + 本项目为 Beslyric-for-X 的一部分，先 git clone Beslyric-for-X 项目到本地自己喜欢的目录
 
->git clone https://github.com/BensonLaur/Beslyric-for-X.git
+`
+git clone https://github.com/BensonLaur/Beslyric-for-X.git
+`
 
 
 ### Windows 平台
@@ -27,6 +29,9 @@
 4. 重新 qmake 后，编译即可运行 程序
 
 
+-----------------------------------
+
+
 ### Debian/Ubuntu (Linux) 平台
 
 可以下载编译好的 也可以自己编译最新的
@@ -37,25 +42,25 @@
 
 1. 下载最新 ffmpeg 源码
 
-> git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
+` git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg `
 
 2. 某些Linux没有安装gcc/g++，需要先安装gcc/g++
 
-> sudo apt-get -y install gcc g++
+` sudo apt-get -y install gcc g++ `
 
 3. 安装相关的类库 (注意这里 sdl相关库 使用的是 libsdl2-dev)
 
-> sudo apt-get -y install yasm libfdk-aac-dev libx264-dev libsdl2-dev
+` sudo apt-get -y install yasm libfdk-aac-dev libx264-dev libsdl2-dev `
 
 4. 进入ffmpeg 源码目录，依次执行如下命令（更多详细细节可参考官方编译 [文档](https://trac.ffmpeg.org/wiki/CompilationGuide)）
 
 ./configure --help  可查看更多参数以及具体意义
 
-> ./configure --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-version3
-
-> make
-
-> make install
+```
+ ./configure --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-version3
+   make
+   make install
+```
 
 5. 等待编译完成，之后应该可以看到 /usr/local/lib /usr/local/include 里多了相应的 ffmpeg 库文件
 
@@ -68,24 +73,29 @@
 
 所以，直接在 /etc/ld.so.conf  文件追加：
 
-> /usr/local/lib
-
-> /usr/local/beslyric-lib/SDL_2_0_3/lib
+```
+/usr/local/lib
+/usr/local/beslyric-lib/SDL_2_0_3/lib
+```
 
 或者，如果 /etc/ld.so.conf 文件里是 include /etc/ld.so.conf.d/*.conf, 可以在 /etc/ld.so.conf.d/ 创建一个新的 .conf 文件，如：beslyric.conf
 
-> \# lib path for beslyric to search by linker 'ld'
-
->/usr/local/lib
-
->/usr/local/beslyric-lib/SDL_2_0_3/lib
+```
+\# lib path for beslyric to search by linker 'ld'
+/usr/local/lib
+/usr/local/beslyric-lib/SDL_2_0_3/lib
+```
 
 9. 设置后，执行下面使修改立刻生效
 
-> ldconfig
+`
+ldconfig
+`
 
 10. 打开 clone 下来的 Beslyric-for-X 项目，qmake 后，编译即可运行
 
+
+-----------------------------------
 
 
 ### MacOs 平台
