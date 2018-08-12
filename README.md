@@ -57,7 +57,7 @@ git clone https://github.com/BensonLaur/Beslyric-for-X.git
 ./configure --help  可查看更多参数以及具体意义
 
 ```
- ./configure --prefix=/usr/local --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-version3
+ ./configure --prefix=/usr/local --enable-shared --enable-libx264 --enable-gpl --enable-version3
    make
    make install
 ```
@@ -124,7 +124,7 @@ Mac Os 的配置过程和 Debian/Ubuntu (Linux) 平台下类似，可以下载�
 ./configure --help  可查看更多参数以及具体意义
 
 ```
-    ./configure --prefix=/usr/local --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-nonfree --enable-version3
+    ./configure --prefix=/usr/local --enable-shared --enable-libx264 --enable-gpl --enable-version3
     make
     make install
 ```
