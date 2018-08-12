@@ -1,4 +1,4 @@
-## beslyic-lib 背景
+## beslyric-lib 背景
 
 [Beslyric-for-X](https://github.com/BensonLaur/Beslyric-for-X) 项目中，使用跨平台开源库 ffmpeg 解析播放音频文件。本项目提供了 ffmpeg 的相关组件和使用说明
 
@@ -20,11 +20,11 @@ git clone https://github.com/BensonLaur/Beslyric-for-X.git
 
 ### Windows 平台
 
-1. clone 本项目 beslyic-lib 到本地，clone 到哪里都行（不过建议clone 到C:\lib\beslyic-lib，这样后面第2步不用改代码）
+1. clone 本项目 beslyric-lib 到本地，clone 到哪里都行（不过建议clone 到C:\lib\beslyric-lib，这样后面第2步不用改代码）
 
 2. 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 win32{} 节点下对应的路径
 
-3. 将本项目下 beslyic-lib\win32\ffmpeg_x_x_x\bin 和 C:\lib\beslyic-lib\win32\SDL_x_x_x\bin 的 dll 拷贝至 Beslyric-for-X 编译程序 的运行目录
+3. 将本项目下 beslyric-lib\win32\ffmpeg_x_x_x\bin 和 C:\lib\beslyric-lib\win32\SDL_x_x_x\bin 的 dll 拷贝至 Beslyric-for-X 编译程序 的运行目录
 
 4. 重新 qmake 后，编译即可运行 程序
 
@@ -57,14 +57,14 @@ git clone https://github.com/BensonLaur/Beslyric-for-X.git
 ./configure --help  可查看更多参数以及具体意义
 
 ```
- ./configure --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-version3
+ ./configure --prefix=/usr/local --enable-shared --enable-libfdk-aac --enable-libx264 --enable-gpl --enable-version3
    make
    make install
 ```
 
 5. 等待编译完成，之后应该可以看到 /usr/local/lib /usr/local/include 里多了相应的 ffmpeg 库文件
 
-6. clone 本项目 beslyic-lib 到本地，clone 到哪里都行（不过建议 clone 到 /usr/local/beslyic-lib，这样后面第7步不用改代码）
+6. clone 本项目 beslyric-lib 到本地，clone 到哪里都行（不过建议 clone 到 /usr/local/beslyric-lib，这样后面第7步不用改代码）
 
 7. 在 Beslyric 子模块 pri 文件（ Beslyric-for-X\Entities\MusicPlayer\musicPlayer.pri ）中，修改 unix{} 节点下对应的路径
 
@@ -81,7 +81,7 @@ git clone https://github.com/BensonLaur/Beslyric-for-X.git
 或者，如果 /etc/ld.so.conf 文件里是 include /etc/ld.so.conf.d/*.conf, 可以在 /etc/ld.so.conf.d/ 创建一个新的 .conf 文件，如：beslyric.conf
 
 ```
-\# lib path for beslyric to search by linker 'ld'
+# lib path searched by linker 'ld' when compiling beslyric
 /usr/local/lib
 /usr/local/beslyric-lib/SDL_2_0_3/lib
 ```
